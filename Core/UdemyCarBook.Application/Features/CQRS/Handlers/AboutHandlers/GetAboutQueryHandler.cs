@@ -27,7 +27,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers
                 Description= x.Description,
                 Title= x.Title,
                 ImageUrl= x.ImageUrl,
-            }).ToList();
+            }).ToList() ;
         }
     }
 }

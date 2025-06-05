@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UdemyCarBook.Domain.Entities
+namespace UdemyCarBook.Application.Features.CQRS.Commands.BannerCommands
 {
-    public class Banner
+    public class UpdateBannerCommand
     {
         public int BannerID { get; set; }
         public string Title { get; set; }

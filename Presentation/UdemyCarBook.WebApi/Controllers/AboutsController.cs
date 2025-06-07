@@ -24,6 +24,7 @@ namespace UdemyCarBook.WebApi.Controllers
             _updateAboutCommandHandler = updateAboutCommandHandler;
             _removeAboutCommandHandler = removeAboutCommandHandler;
         }
+
         [HttpGet]
         public async Task<IActionResult> AboutList()
         {
@@ -34,20 +35,29 @@ namespace UdemyCarBook.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAbout(int id)
         {
-            var values = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
-            return Ok(values);
+            var value = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
+            return Ok(value);
         }
+
         [HttpPost]
-        public async Task<IActionResult> CreateAbout(int id)
+        public async Task<IActionResult> CreateAbout(CreateAboutCommand command)
+        {
+            await _createAboutCommandHandler.Handle(command);
+            return Ok("Hakkımda Bilgisi Eklendi");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoveAbout(int id)
         {
             await _removeAboutCommandHandler.Handle(new RemoveAboutCommand(id));
-            return Ok("Hakkımda bilgisi silindi.");
+            return Ok("Hakkımda Bilgisi Silindi");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateAbout(UpdateAboutCommand command)
         {
             await _updateAboutCommandHandler.Handle(command);
-            return Ok("Hakkımda bilgisi güncellendi");
+            return Ok("Hakkımda Bilgisi Güncellendi");
         }
     }
 }

@@ -1,0 +1,10 @@
+﻿
+CQRS TASARIM DESENİ İLE YAPILANLAR
+---------------------------------
+About
+Banner
+Brand
+Car
+Categories
+Contact
+-----------------------------------

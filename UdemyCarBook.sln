@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EF12BADE-BA66-438F-A3ED-F9D859BE8570}"
 EndProject
@@ -16,6 +16,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.WebApi", "Presentation\UdemyCarBook.WebApi\UdemyCarBook.WebApi.csproj", "{D075A108-80C3-443E-9DE3-45C61CFA0E06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Application", "Core\UdemyCarBook.Application\UdemyCarBook.Application.csproj", "{E148B51B-B351-4682-8B51-6FD43B84035C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{DCE22520-AA00-4966-A35E-0E61F905F018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.WebUI", "Frontends\UdemyCarBook.WebUI\UdemyCarBook.WebUI.csproj", "{1A168AFA-44DE-4510-BD5E-76FB7287DD23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Dto", "Frontends\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{78D0314A-2DDE-4E73-A421-A05A9864ED6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,14 @@ Global
 		{E148B51B-B351-4682-8B51-6FD43B84035C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E148B51B-B351-4682-8B51-6FD43B84035C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E148B51B-B351-4682-8B51-6FD43B84035C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A168AFA-44DE-4510-BD5E-76FB7287DD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A168AFA-44DE-4510-BD5E-76FB7287DD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A168AFA-44DE-4510-BD5E-76FB7287DD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A168AFA-44DE-4510-BD5E-76FB7287DD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78D0314A-2DDE-4E73-A421-A05A9864ED6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D0314A-2DDE-4E73-A421-A05A9864ED6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D0314A-2DDE-4E73-A421-A05A9864ED6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D0314A-2DDE-4E73-A421-A05A9864ED6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +62,7 @@ Global
 		{0F1EF3F7-E63B-4EB1-8A17-EEFCB779EF46} = {95DB164E-E189-4C0D-8243-76BE3C6E2C49}
 		{D075A108-80C3-443E-9DE3-45C61CFA0E06} = {359F204F-4FDE-4068-B2B4-7FB34D98B859}
 		{E148B51B-B351-4682-8B51-6FD43B84035C} = {EF12BADE-BA66-438F-A3ED-F9D859BE8570}
+		{1A168AFA-44DE-4510-BD5E-76FB7287DD23} = {DCE22520-AA00-4966-A35E-0E61F905F018}
+		{78D0314A-2DDE-4E73-A421-A05A9864ED6E} = {DCE22520-AA00-4966-A35E-0E61F905F018}
 	EndGlobalSection
 EndGlobal

@@ -8,3 +8,13 @@ Car
 Categories
 Contact
 -----------------------------------
+
+Mediatr Tasarım deseni ile yapılanlar
+-------------------------------------
+Feature
+FeatureAddress
+Location
+Pricing
+Service
+SocialMedia
+-------------------------------------

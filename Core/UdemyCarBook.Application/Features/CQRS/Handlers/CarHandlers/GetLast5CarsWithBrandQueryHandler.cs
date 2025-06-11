@@ -10,17 +10,17 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
 {
-    public class GetCarWithBrandQueryHandler
+    public class GetLast5CarsWithBrandQueryHandler
     {
         private readonly ICarRepository _repository;
 
-        public GetCarWithBrandQueryHandler(ICarRepository repository)
+        public GetLast5CarsWithBrandQueryHandler(ICarRepository repository)
         {
             _repository = repository;
         }
         public List<GetCarWithBrandQueryResult> Handle()
         {
-            var values = _repository.GetCarsListWithBrands();
+            var values = _repository.GetLast5CarsWithBrands();
             return values.Select(x => new GetCarWithBrandQueryResult
             {
                 BrandName = x.Brand.Name,

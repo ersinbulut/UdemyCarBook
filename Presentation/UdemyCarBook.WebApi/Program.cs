@@ -12,6 +12,7 @@ using UdemyCarBook.Persistence.Context;
 using UdemyCarBook.Persistence.Repositories;
 using UdemyCarBook.Persistence.Repositories.CarRepositories;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Swagger servislerini ekle
@@ -24,6 +25,7 @@ builder.Services.AddScoped<CarBookContext>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
 builder.Services.AddScoped<CreateAboutCommandHandler>();
@@ -48,6 +50,7 @@ builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
+builder.Services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
 
 builder.Services.AddScoped<GetCategoryQueryHandler>();
 builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
@@ -60,6 +63,8 @@ builder.Services.AddScoped<GetContactByIdQueryHandler>();
 builder.Services.AddScoped<CreateContactCommandHandler>();
 builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
+
+
 
 builder.Services.AddApplicationService(builder.Configuration);
 

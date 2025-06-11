@@ -17,4 +17,5 @@ Location
 Pricing
 Service
 SocialMedia
+Testimonial
 -------------------------------------

@@ -12,10 +12,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers
 {
-    public class GetPricingByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, GetServiceByIdQueryResult>
+    public class GetServiceByIdQueryHandler : IRequestHandler<GetServiceByIdQuery, GetServiceByIdQueryResult>
     {
         private readonly IRepository<Service> _repository;
-        public GetPricingByIdQueryHandler(IRepository<Service> repository)
+        public GetServiceByIdQueryHandler(IRepository<Service> repository)
         {
             _repository = repository;
         }

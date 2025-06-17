@@ -10,10 +10,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
-    public class UpdatePricingCommandHandler : IRequestHandler<UpdateSocialMediaCommand>
+    public class UpdateSocialMediaCommandHandler : IRequestHandler<UpdateSocialMediaCommand>
     {
         private readonly IRepository<SocialMedia> _repository;
-        public UpdatePricingCommandHandler(IRepository<SocialMedia> repository)
+        public UpdateSocialMediaCommandHandler(IRepository<SocialMedia> repository)
         {
             _repository = repository;
         }

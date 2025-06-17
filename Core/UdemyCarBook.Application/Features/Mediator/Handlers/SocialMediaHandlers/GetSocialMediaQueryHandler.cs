@@ -12,10 +12,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
-    public class GetServiceQueryHandler : IRequestHandler<GetSocialMediaQuery, List<GetSocialMediaQueryResult>>
+    public class GetSocialMediaQueryHandler : IRequestHandler<GetSocialMediaQuery, List<GetSocialMediaQueryResult>>
     {
         private readonly IRepository<SocialMedia> _repository;
-        public GetServiceQueryHandler(IRepository<SocialMedia> repository)
+        public GetSocialMediaQueryHandler(IRepository<SocialMedia> repository)
         {
             _repository = repository;
         }

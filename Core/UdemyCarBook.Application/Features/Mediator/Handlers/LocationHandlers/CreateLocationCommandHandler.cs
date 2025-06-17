@@ -10,10 +10,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.LocationHandlers
 {
-    public class CreatePricingCommandHandler : IRequestHandler<CreateLocationCommand>
+    public class CreateBlogCommandHandler : IRequestHandler<CreateLocationCommand>
     {
         private readonly IRepository<Location> _repository;
-        public CreatePricingCommandHandler(IRepository<Location> repository)
+        public CreateBlogCommandHandler(IRepository<Location> repository)
         {
             _repository = repository;
         }

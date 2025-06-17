@@ -10,10 +10,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.ServiceHandlers
 {
-    public class CreatePricingCommandHandler : IRequestHandler<CreateServiceCommand>
+    public class CreateServiceCommandHandler : IRequestHandler<CreateServiceCommand>
     {
         private readonly IRepository<Service> _repository;
-        public CreatePricingCommandHandler(IRepository<Service> repository)
+        public CreateServiceCommandHandler(IRepository<Service> repository)
         {
             _repository = repository;
         }

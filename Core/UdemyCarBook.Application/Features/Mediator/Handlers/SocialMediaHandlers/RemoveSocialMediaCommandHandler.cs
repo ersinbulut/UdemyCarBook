@@ -10,11 +10,11 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
-    public class RemovePricingCommandHandler : IRequestHandler<RemoveSocialMediaCommand>
+    public class RemoveSocialMediaCommandHandler : IRequestHandler<RemoveSocialMediaCommand>
     {
         private readonly IRepository<SocialMedia> _repository;
 
-        public RemovePricingCommandHandler(IRepository<SocialMedia> repository)
+        public RemoveSocialMediaCommandHandler(IRepository<SocialMedia> repository)
         {
             _repository = repository;
         }

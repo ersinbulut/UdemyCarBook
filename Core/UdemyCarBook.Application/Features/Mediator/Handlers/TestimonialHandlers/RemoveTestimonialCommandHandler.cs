@@ -10,11 +10,11 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.TestimonialHandlers
 {
-    public class RemovePricingCommandHandler : IRequestHandler<RemoveTestimonialCommand>
+    public class RemoveTestimonialCommandHandler : IRequestHandler<RemoveTestimonialCommand>
     {
         private readonly IRepository<Testimonial> _repository;
 
-        public RemovePricingCommandHandler(IRepository<Testimonial> repository)
+        public RemoveTestimonialCommandHandler(IRepository<Testimonial> repository)
         {
             _repository = repository;
         }

@@ -18,4 +18,6 @@ Pricing
 Service
 SocialMedia
 Testimonial
+Author
+Blog
 -------------------------------------

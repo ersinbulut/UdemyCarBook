@@ -12,10 +12,10 @@ using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Features.Mediator.Handlers.TestimonialHandlers
 {
-    public class GetServiceQueryHandler : IRequestHandler<GetTestimonialQuery, List<GetTestimonialQueryResult>>
+    public class GetTestimonialQueryHandler : IRequestHandler<GetTestimonialQuery, List<GetTestimonialQueryResult>>
     {
         private readonly IRepository<Testimonial> _repository;
-        public GetServiceQueryHandler(IRepository<Testimonial> repository)
+        public GetTestimonialQueryHandler(IRepository<Testimonial> repository)
         {
             _repository = repository;
         }

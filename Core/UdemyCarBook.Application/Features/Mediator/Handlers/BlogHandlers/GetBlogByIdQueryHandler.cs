@@ -22,16 +22,28 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.BlogHandlers
 
         public async Task<GetBlogByIdQueryResult> Handle(GetBlogByIdQuery request, CancellationToken cancellationToken)
         {
-            var values = await _repository.GetByIdAsync(request.Id);
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (request.Id <= 0)
+                throw new ArgumentException("ID must be greater than zero.");
+
+            var blog = await _repository.GetByIdAsync(request.Id);
+
+            if (blog == null)
+                throw new Exception($"Blog with ID {request.Id} not found.");
+
             return new GetBlogByIdQueryResult
             {
-                BlogID= values.BlogID,
-                AuthorID = values.AuthorID,
-                CategoryID = values.CategoryID,
-                CoverImageUrl = values.CoverImageUrl,
-                CreatedDate = values.CreatedDate,
-                Title = values.Title
+                BlogID = blog.BlogID,
+                AuthorID = blog.AuthorID,
+                CategoryID = blog.CategoryID,
+                CoverImageUrl = blog.CoverImageUrl,
+                CreatedDate = blog.CreatedDate,
+                Description = blog.Description,
+                Title = blog.Title
             };
         }
+
     }
 }

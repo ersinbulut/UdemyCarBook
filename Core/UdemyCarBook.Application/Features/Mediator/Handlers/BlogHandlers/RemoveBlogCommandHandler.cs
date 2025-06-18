@@ -20,8 +20,13 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.BlogHandlers
         }
         public async Task Handle(RemoveBlogCommand request, CancellationToken cancellationToken)
         {
-            var value = await _repository.GetByIdAsync(request.Id);
-            await _repository.RemoveAsync(value);
+            // Blog'un var olup olmadığını kontrol ediyoruz
+            var blog = await _repository.GetByIdAsync(request.Id);
+            if (blog == null)
+            {
+                throw new ArgumentException($"BlogID {request.Id} bulunamadı.");
+            }
+            await _repository.RemoveAsync(blog);
         }
     }
 }

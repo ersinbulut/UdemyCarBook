@@ -24,8 +24,15 @@ namespace UdemyCarBook.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBlog(int id)
         {
-            var value = await _mediator.Send(new GetBlogByIdQuery(id));
-            return Ok(value);
+            if (id <= 0)
+                return BadRequest("Geçersiz Blog ID");
+
+            var result = await _mediator.Send(new GetBlogByIdQuery(id));
+
+            if (result == null)
+                return NotFound($"Blog bulunamadı. ID: {id}");
+
+            return Ok(result);
         }
         [HttpPost]
         public async Task<IActionResult> CreateBlog(CreateBlogCommand command)
@@ -45,10 +52,25 @@ namespace UdemyCarBook.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Blog başarıyla güncellendi");
         }
-        [HttpGet("GetLast3BlogsWithAuthorsList")]
-        public async Task<IActionResult> GetLast3BlogsWithAuthorsList()
+
+        [HttpGet("GetLast3BlogsWitAuthorsList")]
+        public async Task<IActionResult> GetLast3BlogsWitAuthorsList()
         {
             var values = await _mediator.Send(new GetLast3BlogsWithAuthorsQuery());
+            return Ok(values);
+        }
+
+        [HttpGet("GetAllBlogsWithAuthorList")]
+        public async Task<IActionResult> GetAllBlogsWithAuthorList()
+        {
+            var values = await _mediator.Send(new GetAllBlogsWithAuthorQuery());
+            return Ok(values);
+        }
+
+        [HttpGet("GetBlogByAuthorId")]
+        public async Task<IActionResult> GetBlogByAuthorId(int id)
+        {
+            var values = await _mediator.Send(new GetBlogByAuthorIdQuery(id));
             return Ok(values);
         }
     }

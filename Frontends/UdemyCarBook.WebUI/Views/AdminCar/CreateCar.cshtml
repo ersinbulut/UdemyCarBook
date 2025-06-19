@@ -31,7 +31,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputTransmission">Vites Türü</label>
-                                <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Vites Türünü Yazınız">
+                                <select class="form-control" id="exampleInputTransmission" asp-for="Transmission">
+                                    <option value="">Vites Türü Seçiniz</option>
+                                    <option value="Otomatik">Otomatik</option>
+                                    <option value="Yarı Otomatik">Yarı Otomatik</option>
+                                    <option value="Manuel">Manuel</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputSeat">Koltuk Sayısı</label>
@@ -43,7 +48,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFuel">Yakıt Türü</label>
-                                <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Yakıt Türünü Giriniz">
+                                <select class="form-control" id="exampleInputFuel" asp-for="Fuel">
+                                    <option value="">Yakıt Türü Seçiniz</option>
+                                    <option value="Benzin">Benzin</option>
+                                    <option value="Dizel">Dizel</option>
+                                    <option value="LPG">LPG</option>
+                                    <option value="Elektrik">Elektrik</option>
+                                    <option value="Hibrit">Hibrit</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputLuggage">Büyük Kapak Fotoğrafı</label>

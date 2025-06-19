@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UdemyCarBook.Dto.AboutDtos
+namespace UdemyCarBook.Dto.BannerDtos
 {
-    public class ResultAboutDto
+    public class CreateBannerDto
     {
-        public int AboutID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string ImageUrl { get; set; }
-
+        public string VideoDescription { get; set; }
+        public string VideoUrl { get; set; }
     }
 }

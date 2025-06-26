@@ -43,14 +43,19 @@ namespace UdemyCarBook.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateReservationDto createReservationDto)
         {
+            createReservationDto.Status = "Rezervasyon Alındı";
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createReservationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7019/api/Reservations", stringContent);
+
             if (responseMessage.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Rezervasyonunuz başarıyla alındı!";
                 return RedirectToAction("Index", "Default");
             }
+
+            TempData["ErrorMessage"] = "Rezervasyon oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.";
             return View();
         }
     }

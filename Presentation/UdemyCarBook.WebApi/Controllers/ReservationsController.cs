@@ -18,6 +18,7 @@ namespace UdemyCarBook.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateReservation(CreateReservationCommand command)
         {
+            command.Status = "Rezervasyon Alındı";
             await _mediator.Send(command);
             return Ok("Rezervasyon başarıyla eklendi");
         }

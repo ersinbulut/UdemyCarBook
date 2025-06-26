@@ -13,53 +13,91 @@ namespace UdemyCarBook.Persistence.Repositories.CarPricingRepositories
 {
     public class CarPricingRepository : ICarPricingRepository
     {
+        // CarBookContext tipinde bir _context değişkeni tanımlanıyor, veritabanı işlemleri burada yapılır.
         private readonly CarBookContext _context;
+
+        // Constructor: Repository sınıfı örneği oluşturulurken context dışarıdan verilir (dependency injection).
         public CarPricingRepository(CarBookContext context)
         {
             _context = context;
         }
+
+        // Bu metot sadece PricingID'si 2 olan fiyatları, ilişkili araç ve marka bilgileri ile birlikte getirir.
         public List<CarPricing> GetCarPricingWithCars()
         {
-            var values = _context.CarPricings.Include(x => x.Car).ThenInclude(y => y.Brand).Include(x => x.Pricing).Where(z => z.PricingID == 2).ToList();
+            var values = _context.CarPricings
+                .Include(x => x.Car) // Car tablosunu dahil eder
+                    .ThenInclude(y => y.Brand) // Car üzerinden Brand (marka) ilişkisini dahil eder
+                .Include(x => x.Pricing) // Pricing bilgisini de dahil eder
+                .Where(z => z.PricingID == 2) // Sadece PricingID'si 2 olanları alır
+                .ToList();
             return values;
         }
 
+        // Bu metot henüz yazılmamış (NotImplementedException fırlatır).
         public List<CarPricing> GetCarPricingWithTimePeriod()
         {
             throw new NotImplementedException();
         }
 
+        // Bu metot, farklı fiyatlandırma periyotlarına göre (örneğin: günlük, haftalık, aylık) araç fiyatlarını pivot tablo şeklinde getirir.
         public List<CarPricingViewModel> GetCarPricingWithTimePeriod1()
         {
             List<CarPricingViewModel> values = new List<CarPricingViewModel>();
+
+            // SQL komutu tanımlanıyor, pivot tablo oluşturulacak.
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "Select * From (Select Model,Name,CoverImageUrl,PricingID,Amount From CarPricings Inner Join Cars On Cars.CarID=CarPricings.CarId Inner Join Brands On Brands.BrandID=Cars.BrandID) As SourceTable Pivot (Sum(Amount) For PricingID In ([2],[3],[4])) as PivotTable;";
+                command.CommandText = @"
+            Select * From 
+            (
+                Select Model, Name, CoverImageUrl, PricingID, Amount 
+                From CarPricings 
+                Inner Join Cars On Cars.CarID = CarPricings.CarId 
+                Inner Join Brands On Brands.BrandID = Cars.BrandID
+            ) As SourceTable 
+            Pivot 
+            (
+                Sum(Amount) For PricingID In ([2],[3],[4])
+            ) as PivotTable;
+        ";
                 command.CommandType = System.Data.CommandType.Text;
+
+                // Veritabanı bağlantısı açılır
                 _context.Database.OpenConnection();
+
+                // Komut çalıştırılır ve sonuçlar okunur
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        // Her satır için ViewModel oluşturulur ve fiyatlar listeye eklenir
                         CarPricingViewModel carPricingViewModel = new CarPricingViewModel()
                         {
-                            Brand = reader["Name"].ToString(),
-                            Model = reader["Model"].ToString(),
-                            CoverImageUrl = reader["CoverImageUrl"].ToString(),
+                            Brand = reader["Name"].ToString(), // Marka adı
+                            Model = reader["Model"].ToString(), // Araç modeli
+                            CoverImageUrl = reader["CoverImageUrl"].ToString(), // Araç görseli
                             Amounts = new List<decimal>
-                            {
-                                Convert.ToDecimal(reader["2"]),
-                                Convert.ToDecimal(reader["3"]),
-                                Convert.ToDecimal(reader["4"])
-                            }
+                    {
+                        Convert.ToDecimal(reader["2"]), // Günlük fiyat
+                        Convert.ToDecimal(reader["3"]), // Haftalık fiyat
+                        Convert.ToDecimal(reader["4"])  // Aylık fiyat
+                    }
                         };
                         values.Add(carPricingViewModel);
                     }
                 }
+
+                // Veritabanı bağlantısı kapatılır
                 _context.Database.CloseConnection();
+
+                // Sonuçlar döndürülür
                 return values;
             }
         }
+
+
+
     }
 }
 

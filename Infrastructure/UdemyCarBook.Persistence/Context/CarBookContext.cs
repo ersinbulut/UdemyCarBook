@@ -20,7 +20,7 @@ namespace UdemyCarBook.Persistence.Context
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarDescription> CarDescriptions { get; set; }
-        public DbSet<CarFeature> CarFeature { get; set; }
+        public DbSet<CarFeature> CarFeatures { get; set; }
         public DbSet<CarPricing> CarPricings { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Contact> Contacts { get; set; }

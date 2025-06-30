@@ -55,11 +55,15 @@ namespace UdemyCarBook.WebUI.Controllers
             var jsonData = JsonConvert.SerializeObject(createCommentDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7019/api/Comments/CreateCommentWithMediator", stringContent);
+
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Default");
+                TempData["CommentSuccess"] = true;
+                return RedirectToAction("BlogDetail", "Blog", new { id = createCommentDto.BlogID });
             }
+
             return View();
         }
+
     }
 }

@@ -1,8 +1,8 @@
 ﻿@model List<ResultFeatureDto>
-
 @{
     ViewData["Title"] = "CreateFeatureByCarId";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int carId = ViewBag.CarId;
 }
 
 <div class="page-content">
@@ -12,21 +12,25 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Araca Ait Özellikler Ekleme Sayfası</h4>
-                        <p class="card-subtitle mb-4">
-                            Araca ait özellik tanımlaması yapılacak sayfadır.
-                        </p>
                         <form method="post">
-                            @for (int i = 0; i < Model.Count; i++)
+                            @foreach (var feature in Model)
                             {
                                 <div class="form-check">
-                                    <input type="hidden" asp-for="@Model[i].FeatureID" />
-                                    <input type="hidden" asp-for="@Model[i].Name" />
-                                    <input type="checkbox" class="form-check-input" />
-                                    <label class="form-check-label">@Model[i].Name</label>
+                                    <input type="checkbox"
+                                           name="FeatureIDs"
+                                           value="@feature.FeatureID"
+                                           class="form-check-input"
+                                           id="feature_@feature.FeatureID" />
+                                    <label class="form-check-label" for="feature_@feature.FeatureID">
+                                        @feature.Name
+                                    </label>
                                 </div>
                             }
+
+                            <input type="hidden" name="CarID" value="@carId" />
+
                             <br />
-                            <button class="btn btn-primary">Araca Özellikleri Ata</button>
+                            <button type="submit" class="btn btn-primary">Araca Özellikleri Ata</button>
                         </form>
                     </div>
                 </div>
